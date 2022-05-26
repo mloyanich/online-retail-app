@@ -1,0 +1,7 @@
+dist/
+*.egg-info
+venv
+
+__pycache__
+*_json/
+*.csv
