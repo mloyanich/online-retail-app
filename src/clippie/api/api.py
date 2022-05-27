@@ -1,25 +1,20 @@
 from fastapi import APIRouter
-from .product import ProductDataFrame
+from clippie.api.product import ProductDataFrame
 
 router = APIRouter()
 
 products = ProductDataFrame()
 
 
-@router.get("/pipeline")
-def read_pipeline(skip: int = 0, limit: int = 100):
-    return {"status": "To be implemented"}
-
-
 @router.post("/pipeline")
-def start_pipeline():
+def start_pipeline_data_processing():
     df = products.load_df()
     transformed = products.transform()
     return {"status": "pipeline ran successfully!!"}
 
 @router.get("/product")
-def read_products(skip: int = 0, limit: int = 100, search: str = ""):
-    result = [row.asDict() for row in products.df.head(limit)]
+def read_products(search: str = ""):
+    result = [row.asDict() for row in products.df.head(100)]
     print('working!')
     if search:
         search = search.replace('"', '') 

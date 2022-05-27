@@ -1,44 +1,55 @@
 # online-retail-app
 
 This is a FastAPI application that accepts a product description as input and returns the top 10 most similar products that are in the transaction data.
+The dataset used in this application is located at the [following URL](https://archive.ics.uci.edu/ml/datasets/online+retail)
 
-In order to install the app run
+## Install
+
+```bash
+pip install clippie
+```
+
+Install the application from the local directory
 
 ```bash
 pip install -e .
 ```
 
-Available endpoints:
-
-- `/docs` - GET - API documentation
-- `/product` - GET - displays list of products
-- `/product?search=coala` - GET - find relevant products to the provided desciption
-- `/pipeline` - POST
+## Run
 
 Run the application with the following command
 
 ```bash
-online-retail-app
+clippie
 ```
 
 or
 
 ```bash
-python3 src/online_retail_app/main.py
+python3 src/clippie/main.py
 ```
 
-Upon start the application loads sample dataset that is located in `data` folder
+Upon start the application loads sample dataset that is located in the `data` folder
 
-# TODO
+## API endpoints
+
+Application listens on http://localhost:8000
+
+Available endpoints:
+
+- `/docs` - GET - API documentation
+- `/product` - GET - displays list of products
+- `/product?search=coala` - GET - find relevant products to the provided description
+- `/pipeline` - POST
+
+## TODO
 
 - [ ] package Java jar file in order to open excel with pyspark
 - [ ] enable tempfile
-- [ ] run the application
-- [ ] GET pipeline to see the number of pipeline that has been executed
 - [ ] add history of pipeline execution to GET pipeline
-- [ ] what will happen if pipelines run in parallel?
-- [ ] description in a body of product GET
-- [x] precalculate number of words in entire dataset
-- [x] what if I pass a new word to product GET?
-- [x] product should be more than 0.0
-- [x] BUG - product search stopped working
+- [ ] GET pipeline to see the number of pipeline that has been executed
+- [ ] the collision will happen if pipelines run in parallel?
+- [ ] Github action
+- [ ] Stop Spark on program termination
+- [ ] BUG - spark is loaded twice!
+- [ ] add debug mode with reload=True

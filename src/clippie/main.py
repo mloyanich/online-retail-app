@@ -1,7 +1,7 @@
 import os
 
 import uvicorn
-from api.api import router as api_router
+from clippie.api.api import router as api_router
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -25,10 +25,11 @@ def get_application():
 
 app = get_application()
 
-
+def run():
+    server_port = os.getenv("PORT") or 8000
+    uvicorn.run("clippie.main:app", host="0.0.0.0", port=server_port)
 
 
 if __name__ == "__main__":
-
-    server_port = os.getenv("PORT") or 8000
-    uvicorn.run("main:app", host="0.0.0.0", port=server_port, reload=True)
+    run()
+    

@@ -7,6 +7,6 @@ setup(
     zip_safe=False,
     keywords="Retail Data application",
     entry_points={
-        "console_scripts": ["online-retail-app=online_retail_app.main"]
+        "console_scripts": ["clippie=clippie.main:run"]
     },
 )
