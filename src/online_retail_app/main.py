@@ -23,11 +23,12 @@ def get_application():
     )
     return application
 
-
-print("This is test message")
-
 app = get_application()
 
+
+
+
 if __name__ == "__main__":
+
     server_port = os.getenv("PORT") or 8000
     uvicorn.run("main:app", host="0.0.0.0", port=server_port, reload=True)
