@@ -1,16 +1,14 @@
 import os
 
 import uvicorn
-from api.product import router as product_router
-from api.pipeline import router as pipeline_router
+from api.api import router as api_router
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 
 def get_application():
     application = FastAPI()
-    application.include_router(product_router, prefix="/product")
-    application.include_router(pipeline_router, prefix="/pipeline")
+    application.include_router(api_router)
 
     origins = [
         "http://localhost:3000",
